@@ -3,19 +3,24 @@ import { toast } from "@/components/ui/use-toast";
 import { useWallet } from "@lazorkit/wallet";
 import { Connection } from "@solana/web3.js";
 
-const connection = new Connection('https://api.devnet.solana.com');
-
 const WalletContext = createContext({});
 
 export function WalletProvider({ children }) {
   const {
-    isConnected,    // boolean: wallet connection status
-    publicKey,      // string | null: user's public key
-    connect,        // () => Promise<void>: connect wallet
-    disconnect,     // () => void: disconnect wallet
-    signMessage,    // (message: Uint8Array) => Promise<Uint8Array>: sign a message
-    error,          // string | null: error message if any
-  } = useWallet(connection);
+    credentialId,
+    publicKey,
+    isConnected,
+    smartWalletAuthorityPubkey,
+    isLoading,
+    error       // string | null: error message if any
+  } = useWallet();
+
+
+console.log("pubkey",publicKey);
+
+
+  console.log("smart!",smartWalletAuthorityPubkey);
+  
 
   const [loading, setLoading] = useState(false);
   const [isPassConnected, setIsPassConnected] = useState(false);

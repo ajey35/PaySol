@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from '@/App';
 import '@/index.css';
 import process from 'process';
+import DApp from './components/Dapp';
 
 window.process = process;
 ReactDOM.createRoot(document.getElementById('root')).render(
- 
-    <App />
+   <DApp/>
 );
